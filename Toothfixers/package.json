@@ -1,0 +1,21 @@
+{
+  "name": "toothfixers",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "turbo": "^1.7.4"
+  },
+  "scripts": {
+    "dev": "turbo run dev"
+  },
+  "workspaces": [
+    "fullstack/*"
+  ],
+  "packageManager": "pnpm@6.32.4",
+  "dependencies": {
+    "toothfixers": "file:"
+  }
+}

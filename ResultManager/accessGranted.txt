@@ -1,0 +1,11 @@
+S/N	-|-EMAIL		 		 -|-PASSWORD
+1.	-|-mbello@pau.edu.ng-     |-Mbello123
+2.	-|-tamoo@pau.edu.ng-      |-Tamoo123
+3.	-|-aijezie@pau.edu.ng-    |-Aijezie123
+4.	-|-jehigie@pau.edu.ng-    |-Jehigie123
+5.	-|-cigah@pau.edu.ng-      |-Cigah123
+6.	-|-ckezie@pau.edu.ng-     |-Ckezie123
+7.	-|-ouduehi@pau.edu.ng-    |-Ouduehi123
+8.	-|-madelabu@pau.edu.ng-   |-Madelabu123
+9.	-|-entinnovate@pau.edu.ng-|-Entinnovate123
+10.	-|-dagholor@pau.edu.ng-   |-Dagholor123

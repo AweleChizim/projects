@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="grid-container">
+    <div class="navigation-bar grid-item-row-1">
+        <div class="navigation-bar-left">
+            <div>
+                <a href="/api/" >Home</a>
+            </div>
+            <div>
+                <a href="/api/about-us">About Us</a>
+            </div>
+            <div>
+                <a href="/api/patients/view">View all patients</a>
+            </div>
+            <div>
+                <a href="/api/patients/create">Add patient</a>
+            </div>
+        </div>
+        <div class="navigation-bar-right">
+            <div>
+                <input type="search">
+                <button>Search</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div>
+    Patient Information has been deleted for patient {{firstName}}.
+</div>
+<section class="section">
+    <div class="container">
+        <div id="notification" class="notification container is-hidden animated slideInUp">
+            <button class="delete"></button>
+            <div id="notificationMessage">
+                {{notificationMessage}}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock %}
+
+<script>
+    
+
+</script>

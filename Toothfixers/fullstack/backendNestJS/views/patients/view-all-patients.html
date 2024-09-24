@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="grid-container">
+    <div class="navigation-bar grid-item-row-1">
+        <div class="navigation-bar-left">
+            <div>
+                <a href="/api/" >Home</a>
+            </div>
+            <div>
+                <a href="/api/about-us">About Us</a>
+            </div>
+            <div>
+                <a href="/api/patients/view" class="active">View all patients</a>
+            </div>
+            <div>
+                <a href="/api/patients/create">Add patient</a>
+            </div>
+        </div>
+        <div class="navigation-bar-right">
+            <div>
+                <input type="search">
+                <button>Search</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="grid-item-row-2">
+        <table class="">
+            <thead>
+                <tr>
+                    <th>Patient Name    </th>
+                    <th>NIN </th>
+                    <th>ID  </th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patienti in patients %}
+                    <tr>
+                        <td>{{patienti.firstName}}</td>
+                        <td>{{patienti.NIN}}</td>
+                        <td>{{patienti.id}}</td>
+                        <td><a class="button" href="/api/patients/view/{{patienti.id}}/">View</a></td>
+                        <td><a class="button" href="/api/patients/edit/{{patienti.id}}/">Edit</a></td>
+                        <td><a class="button" href="/api/patients/delete/{{patienti.id}}/" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>    
+    </div>
+</div>
+
+{% endblock %}
+
+<section class="section">
+    <div class="container">
+        <div id="notification" class="notification container is-hidden animated slideInUp">
+            <button class="delete"></button>
+            <div id="notificationMessage">
+                {{notificationMessage}}
+            </div>
+        </div>
+    </div>
+</section>
