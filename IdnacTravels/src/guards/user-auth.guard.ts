@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import {
+  Injectable,
+  CanActivate,
+  ExecutionContext,
+  UnauthorizedException,
+  Logger,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { Request } from 'express';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -10,6 +17,24 @@ export class UserAuthGuard implements CanActivate {
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
+    const request = context.switchToHttp().getRequest();
+    const token = this.getTokenFromHeader(request);
+
+    if (!token) {
+      throw new UnauthorizedException('Invalid Token');
+    }
+
+    try {
+      const payload = this.jwtService.verify(token);
+      request.userId = payload.userId;
+    } catch (error) {
+      Logger.error(error.message);
+      throw new UnauthorizedException('Invalid Token');
+    }
     return true;
+  }
+
+  private getTokenFromHeader(request: Request): string | undefined {
+    return request.headers.authorization?.split(' ')[1];
   }
 }

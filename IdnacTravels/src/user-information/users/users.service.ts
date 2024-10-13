@@ -14,6 +14,7 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { UserRefreshToken } from './entities/user-refresh-token.entity';
 import { v4 as uuidv4 } from 'uuid';
+import { UpdateUserRefreshTokenDto } from './dto/update-refresh-token.dto';
 
 @Injectable()
 export class UsersService {
@@ -99,7 +100,9 @@ export class UsersService {
       throw new UnauthorizedException('Session Timeout! Please login again.');
     }
 
-    await this.userRefreshTokenRepository.remove(userToken);
+    //Delete the previously stored token when user refreshes
+    //await this.userRefreshTokenRepository.remove(userToken);
+
     //Token is still valid
     return this.getUserTokens(userToken.userId);
   }
@@ -123,12 +126,24 @@ export class UsersService {
     const expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + 1);
 
-    const newToken = this.userRefreshTokenRepository.create({
-      userToken,
-      userId,
-      expiryDate,
+    //Ensures there is only one token for each user in the db
+    await this.userRefreshTokenRepository.update(
+      { userId },
+      { expiryDate, userToken },
+    );
+
+    const findUser = await this.userRefreshTokenRepository.findOne({
+      where: { userId },
     });
-    await this.userRefreshTokenRepository.save(newToken);
+
+    if (!findUser) {
+      const newToken = await this.userRefreshTokenRepository.create({
+        userId,
+        userToken,
+        expiryDate,
+      });
+      await this.userRefreshTokenRepository.save(newToken);
+    }
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
