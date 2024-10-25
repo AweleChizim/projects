@@ -87,6 +87,12 @@ export class UsersService {
     };
   }
 
+  async changePassword(userId, oldPassword: string, newPassword: string) {
+    //Find user in the db
+    //Check if the old password entered matches the one in the db
+    //Change the user's password to the new password entered
+  }
+
   async refreshTokens(userRefreshToken: string) {
     //Check if user's token is still valid
     const userToken = await this.userRefreshTokenRepository.findOne({
@@ -99,9 +105,6 @@ export class UsersService {
     if (!userToken) {
       throw new UnauthorizedException('Session Timeout! Please login again.');
     }
-
-    //Delete the previously stored token when user refreshes
-    //await this.userRefreshTokenRepository.remove(userToken);
 
     //Token is still valid
     return this.getUserTokens(userToken.userId);
