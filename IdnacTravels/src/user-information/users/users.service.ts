@@ -90,7 +90,7 @@ export class UsersService {
   async changePassword(userId, oldPassword: string, newPassword: string) {
     //Find user in the db
     //Check if the old password entered matches the one in the db
-    //Change the user's password to the new password entered
+    //Change the user's password to the new password entered 
   }
 
   async refreshTokens(userRefreshToken: string) {
