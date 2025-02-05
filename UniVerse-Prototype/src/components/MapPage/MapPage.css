@@ -1,0 +1,163 @@
+.map-container {
+    background: linear-gradient(135deg, #748CAB, #748CAB);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    color: #030512;
+}
+
+.logo2 {
+    width: 220px;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.back-chevron {
+    width: 35px;
+    height: auto;
+}
+
+.heading {
+    text-align: center;
+    font-size: 28px;
+    color: #030512;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.map-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    background: rgba(5, 5, 150, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.map-page-left {
+    flex-basis: 50%;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+    transform: scale(0.95);
+    position: relative;
+}
+
+.map-page-left:hover {
+    transform: scale(1);
+}
+
+.campus-map-page {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.map-page-right {
+    flex-basis: 45%;
+    font-size: 18px;
+    color: #1C2E4A;
+    margin: 10px 0;
+    max-width: 400px;
+}
+
+.form-control {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-control input {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #f2f7f9;
+    font-size: 16px;
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.form-control .icon {
+    font-size: 20px;
+    color: #1C2E4A;
+}
+
+.button2 {
+    background: #748CAB;
+    color: #030512;
+    padding: 10px 15px; 
+    font-size: 14px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 550;
+    transition: 0.3s ease-in-out;
+    display: block;
+    width: fit-content;
+    margin: 10px auto;
+}
+
+.button2:hover {
+    background: #1C2E4A;
+    color: #748CAB;
+    transform: scale(1.05);
+}
+
+.time {
+    color: #030512;
+    font-weight: bold;
+}
+
+.details {
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+
+@media (max-width: 1000px) {
+    .map-page {
+        flex-direction: column;
+        text-align: center;
+    }
+    .map-page-left, .map-page-right {
+        flex-basis: 100%;
+    }
+    .form-control {
+        justify-content: center;
+    }
+    .logo2 {
+        width: 180px;
+    }
+    .heading {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 530px) {
+    .map-page-right {
+        font-size: 14px;
+    }
+    .logo2 {
+        width: 140px;
+    }
+    .heading {
+        font-size: 20px;
+    }
+    .form-control input {
+        font-size: 14px;
+    }
+}
